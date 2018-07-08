@@ -1,0 +1,416 @@
+
+SQL> create table users(user_id varchar(4) primary key, password varchar(7),role varchar(10), 
+     user_name varchar(20), mobile_no varchar(10), phone varchar(10),address varchar(50),email varchar(30));
+
+Table created.
+
+SQL> create sequence user_id_seq start with 1000;
+
+Sequence created.
+
+SQL> create table hotel(hotel_id varchar(25) primary key, city varchar(20), hotel_name varchar(30), address varchar(40),description varchar(50),avg_rate_per_night number(10,2),phone_no1 varchar(10),phone_no2 varchar(10),rating varchar(4),email varchar(40),fax varchar(15),hotel_photo varchar2(30));
+
+Table created.
+
+SQL> create sequence hotel_id_seq start with 4000;
+
+Sequence created.
+
+SQL> create table roomdetails(hotel_id varchar(4) references hotel(hotel_id), room_id varchar(4) primary key,room_no varchar(3),room_type varchar(30),per_night_rate number(6,2),availability varchar(5),room_photo varchar(50));
+
+Table created.
+
+SQL> create sequence room_id_seq start with 8888;
+
+Sequence created.
+
+SQL> create table bookingdetails (booking_id varchar(4) primary key, room_id varchar(4) references roomdetails(room_id),user_id varchar(4) references users(user_id), booked_from date,booked_to date,no_of_adults number,no_of_children number,amount number(10,2));
+
+Table created.
+
+SQL> create sequence booking_id_seq start with 4545;
+
+Sequence created.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SQL> select * from hotel;
+
+HOTEL_ID                  CITY                 HOTEL_NAME                       
+------------------------- -------------------- ------------------------------   
+ADDRESS                                                                         
+----------------------------------------                                        
+DESCRIPTION                                        AVG_RATE_PER_NIGHT PHONE_NO1 
+-------------------------------------------------- ------------------ ----------
+PHONE_NO2      RATING EMAIL                                    FAX              
+---------- ---------- ---------------------------------------- ---------------  
+4017                      Mumbai               Le Sutra-The Indian Art Hotel    
+Chatrapathi Sivaji Road                                                         
+Have a continental food and pool facilities                      9856 8734656574
+9863674653          5 sutra@gmail.com                          +1923657863845   
+                                                                                
+
+HOTEL_ID                  CITY                 HOTEL_NAME                       
+------------------------- -------------------- ------------------------------   
+ADDRESS                                                                         
+----------------------------------------                                        
+DESCRIPTION                                        AVG_RATE_PER_NIGHT PHONE_NO1 
+-------------------------------------------------- ------------------ ----------
+PHONE_NO2      RATING EMAIL                                    FAX              
+---------- ---------- ---------------------------------------- ---------------  
+4018                      Mumbai               FabHotel Arton Suites            
+Gulab Estate                                                                    
+Have a continental food and pool facilities                      2834 9832754646
+8326564738          3 artonsuites@gmail.com                    +19824675372     
+                                                                                
+
+HOTEL_ID                  CITY                 HOTEL_NAME                       
+------------------------- -------------------- ------------------------------   
+ADDRESS                                                                         
+----------------------------------------                                        
+DESCRIPTION                                        AVG_RATE_PER_NIGHT PHONE_NO1 
+-------------------------------------------------- ------------------ ----------
+PHONE_NO2      RATING EMAIL                                    FAX              
+---------- ---------- ---------------------------------------- ---------------  
+4019                      Mumbai               Sahara Star                      
+Domestic Airport                                                                
+Have a continental food,wifi and pool facilities                 8583 8327654547
+9284773856          5 saharastar@gmail.com                     +19832645487     
+                                                                                
+
+HOTEL_ID                  CITY                 HOTEL_NAME                       
+------------------------- -------------------- ------------------------------   
+ADDRESS                                                                         
+----------------------------------------                                        
+DESCRIPTION                                        AVG_RATE_PER_NIGHT PHONE_NO1 
+-------------------------------------------------- ------------------ ----------
+PHONE_NO2      RATING EMAIL                                    FAX              
+---------- ---------- ---------------------------------------- ---------------  
+4020                      Chennai              Deccan Plaza                     
+Royapetta High Road                                                             
+Have a North Indian food and wifi facilities                     2452 9832174649
+9238756522          4 deccanplaza@gmail.com                    +1827364638299   
+                                                                                
+
+HOTEL_ID                  CITY                 HOTEL_NAME                       
+------------------------- -------------------- ------------------------------   
+ADDRESS                                                                         
+----------------------------------------                                        
+DESCRIPTION                                        AVG_RATE_PER_NIGHT PHONE_NO1 
+-------------------------------------------------- ------------------ ----------
+PHONE_NO2      RATING EMAIL                                    FAX              
+---------- ---------- ---------------------------------------- ---------------  
+4021                      Chennai              Treebo Grace Residency           
+Puraisaivakam                                                                   
+Have a North Indian food,cab and wifi facilities                 2770 9218746483
+9238756638          4 treebograce@gmail.com                    +1873266492923   
+                                                                                
+
+HOTEL_ID                  CITY                 HOTEL_NAME                       
+------------------------- -------------------- ------------------------------   
+ADDRESS                                                                         
+----------------------------------------                                        
+DESCRIPTION                                        AVG_RATE_PER_NIGHT PHONE_NO1 
+-------------------------------------------------- ------------------ ----------
+PHONE_NO2      RATING EMAIL                                    FAX              
+---------- ---------- ---------------------------------------- ---------------  
+4022                      Chennai              Blu Iris                         
+Naidu Colony                                                                    
+Have a North Indian food facility                                1759 9832664285
+7982477674          3 bluiris@gmail.com                        +1982347668399   
+                                                                                
+
+HOTEL_ID                  CITY                 HOTEL_NAME                       
+------------------------- -------------------- ------------------------------   
+ADDRESS                                                                         
+----------------------------------------                                        
+DESCRIPTION                                        AVG_RATE_PER_NIGHT PHONE_NO1 
+-------------------------------------------------- ------------------ ----------
+PHONE_NO2      RATING EMAIL                                    FAX              
+---------- ---------- ---------------------------------------- ---------------  
+4023                      Bangalore            Leela Palace                     
+Kodihalli                                                                       
+Have a Continental Food,Cab and Pool Facilities                  9999 9832764759
+8327656483          5 leelapalace@gmail.com                    +18217364537     
+                                                                                
+
+HOTEL_ID                  CITY                 HOTEL_NAME                       
+------------------------- -------------------- ------------------------------   
+ADDRESS                                                                         
+----------------------------------------                                        
+DESCRIPTION                                        AVG_RATE_PER_NIGHT PHONE_NO1 
+-------------------------------------------------- ------------------ ----------
+PHONE_NO2      RATING EMAIL                                    FAX              
+---------- ---------- ---------------------------------------- ---------------  
+4024                      Bangalore            Radha Regent                     
+IIOC Electronic City                                                            
+Have a Continental Food,Cab and Pool Facilities                  9520 9812476648
+7623545483          5 radharegent@gmail.com                    +182376475474    
+                                                                                
+
+HOTEL_ID                  CITY                 HOTEL_NAME                       
+------------------------- -------------------- ------------------------------   
+ADDRESS                                                                         
+----------------------------------------                                        
+DESCRIPTION                                        AVG_RATE_PER_NIGHT PHONE_NO1 
+-------------------------------------------------- ------------------ ----------
+PHONE_NO2      RATING EMAIL                                    FAX              
+---------- ---------- ---------------------------------------- ---------------  
+4025                      Bangalore            Le Meridian                      
+Sankey Road                                                                     
+Have a Continental Food and Pool Facilities                      8500 8327655484
+9328579878          4 lemeridian@gmail.com                     +19821465478499  
+                                                                                
+
+9 rows selected.
+
+SQL> set pagesize 300
+SQL> set linesize 300
+SQL> select * from hotel;
+
+HOTEL_ID                  CITY                 HOTEL_NAME                     ADDRESS                                  DESCRIPTION                                        AVG_RATE_PER_NIGHT PHONE_NO1  PHONE_NO2      RATING EMAIL                                    FAX                                  
+------------------------- -------------------- ------------------------------ ---------------------------------------- -------------------------------------------------- ------------------ ---------- ---------- ---------- ---------------------------------------- ---------------                      
+4017                      Mumbai               Le Sutra-The Indian Art Hotel  Chatrapathi Sivaji Road                  Have a continental food and pool facilities                      9856 8734656574 9863674653          5 sutra@gmail.com                          +1923657863845                       
+4018                      Mumbai               FabHotel Arton Suites          Gulab Estate                             Have a continental food and pool facilities                      2834 9832754646 8326564738          3 artonsuites@gmail.com                    +19824675372                         
+4019                      Mumbai               Sahara Star                    Domestic Airport                         Have a continental food,wifi and pool facilities                 8583 8327654547 9284773856          5 saharastar@gmail.com                     +19832645487                         
+4020                      Chennai              Deccan Plaza                   Royapetta High Road                      Have a North Indian food and wifi facilities                     2452 9832174649 9238756522          4 deccanplaza@gmail.com                    +1827364638299                       
+4021                      Chennai              Treebo Grace Residency         Puraisaivakam                            Have a North Indian food,cab and wifi facilities                 2770 9218746483 9238756638          4 treebograce@gmail.com                    +1873266492923                       
+4022                      Chennai              Blu Iris                       Naidu Colony                             Have a North Indian food facility                                1759 9832664285 7982477674          3 bluiris@gmail.com                        +1982347668399                       
+4023                      Bangalore            Leela Palace                   Kodihalli                                Have a Continental Food,Cab and Pool Facilities                  9999 9832764759 8327656483          5 leelapalace@gmail.com                    +18217364537                         
+4024                      Bangalore            Radha Regent                   IIOC Electronic City                     Have a Continental Food,Cab and Pool Facilities                  9520 9812476648 7623545483          5 radharegent@gmail.com                    +182376475474                        
+4025                      Bangalore            Le Meridian                    Sankey Road                              Have a Continental Food and Pool Facilities                      8500 8327655484 9328579878          4 lemeridian@gmail.com                     +19821465478499                      
+
+9 rows selected.
+
+SQL> insert into roomdetails values(4017,room_id_seq.NEXTVAL,'101',Standard Non A/c',1500.00,'true');
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+insert into roomdetails values(4000,room_id_seq.NEXTVAL,'101','Standard Non A/c',1500.00,'true','non-ac.jpg');
+insert into roomdetails values(4000,room_id_seq.NEXTVAL,'102','Standard A/C',2500.00,'true','ac.jpg');
+insert into roomdetails values(4000,room_id_seq.NEXTVAL,'103','Executive A/C',3500.00,'true','executive-ac.jpg');
+insert into roomdetails values(4000,room_id_seq.NEXTVAL,'104','Deluxe A/C',4500.00,'true','deluxe-ac.jpg');
+insert into roomdetails values(4001,room_id_seq.NEXTVAL,'101','Standard Non A/C',2000.00,'true','non-ac.jpg');
+insert into roomdetails values(4001,room_id_seq.NEXTVAL,'102','Standard A/C',3500.00,'true','ac.jpg');
+insert into roomdetails values(4001,room_id_seq.NEXTVAL,'103','Executive A/C',4500.00,'true','executive-ac.jpg');
+insert into roomdetails values(4001,room_id_seq.NEXTVAL,'104','Deluxe A/C',5500.00,'true','deluxe-ac.jpg');
+insert into roomdetails values(4002,room_id_seq.NEXTVAL,'101','Standard Non A/C',1000.00,'true','non-ac.jpg');
+insert into roomdetails values(4002,room_id_seq.NEXTVAL,'102','Standard A/C',2000.00,'true','ac.jpg');
+insert into roomdetails values(4002,room_id_seq.NEXTVAL,'103','Executive A/C',3500.00,'true','executive-ac.jpg');
+insert into roomdetails values(4002,room_id_seq.NEXTVAL,'104','Deluxe A/C',5000.00,'true','deluxe-ac.jpg');
+insert into roomdetails values(4003,room_id_seq.NEXTVAL,'101','Standard Non A/C',1500.00,'true','non-ac.jpg');
+insert into roomdetails values(4003,room_id_seq.NEXTVAL,'102','Standard A/C',2500.00,'true','ac.jpg');
+insert into roomdetails values(4003,room_id_seq.NEXTVAL,'103','Executive A/C',3500.00,'true','executive-ac.jpg');
+insert into roomdetails values(4003,room_id_seq.NEXTVAL,'104','Deluxe A/C',5000.00,'true','deluxe-ac.jpg');
+insert into roomdetails values(4004,room_id_seq.NEXTVAL,'101','Standard Non A/C',1000.00,'true','non-ac.jpg');
+insert into roomdetails values(4004,room_id_seq.NEXTVAL,'102','Standard A/C',2500.00,'true','ac.jpg');
+insert into roomdetails values(4004,room_id_seq.NEXTVAL,'103','Executive A/C',3500.00,'true','executive-ac.jpg');
+insert into roomdetails values(4004,room_id_seq.NEXTVAL,'104','Deluxe A/C',5000.00,'true','deluxe-ac.jpg');
+insert into roomdetails values(4005,room_id_seq.NEXTVAL,'101','Standard Non A/C',2000.00,'true','non-ac.jpg');
+insert into roomdetails values(4005,room_id_seq.NEXTVAL,'102','Standard A/C',3500.00,'true','ac.jpg');
+insert into roomdetails values(4005,room_id_seq.NEXTVAL,'103','Executive A/C',5000.00,'true','executive-ac.jpg');
+insert into roomdetails values(4005,room_id_seq.NEXTVAL,'104','Deluxe A/C',6500.00,'true','deluxe-ac.jpg');
+insert into roomdetails values(4006,room_id_seq.NEXTVAL,'101','Standard Non A/c',4500.00,'true','non-ac.jpg');
+insert into roomdetails values(4006,room_id_seq.NEXTVAL,'102','Standard A/c',5000.00,'true','ac.jpg'); 
+insert into roomdetails values(4006,room_id_seq.NEXTVAL,'103','Executive A/c',5500.00,'true','executive-ac.jpg');
+insert into roomdetails values(4006,room_id_seq.NEXTVAL,'104','Deluxe A/c',6000.00,'true','deluxe-ac.jpg');
+insert into roomdetails values(4007,room_id_seq.NEXTVAL,'101','Standard Non A/c',7500.00,'true','non-ac.jpg');
+insert into roomdetails values(4007,room_id_seq.NEXTVAL,'102','Standard A/c',8000.00,'true','ac.jpg');
+insert into roomdetails values(4007,room_id_seq.NEXTVAL,'103','Executive A/c',8500.00,'true','executive-ac.jpg');
+insert into roomdetails values(4007,room_id_seq.NEXTVAL,'104','Deluxe A/c',9000.00,'true','deluxe-ac.jpg');
+insert into roomdetails values(4008,room_id_seq.NEXTVAL,'101','Standard Non A/c',2500.00,'true','non-ac.jpg');
+insert into roomdetails values(4008,room_id_seq.NEXTVAL,'102','Standard A/c',3000.00,'true','ac.jpg');
+insert into roomdetails values(4008,room_id_seq.NEXTVAL,'103','Executive A/c',3500.00,'true','executive-ac.jpg');
+insert into roomdetails values(4008,room_id_seq.NEXTVAL,'104','Deluxe A/c',4000.00,'true','deluxe-ac.jpg');
+
+1 row created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> spool off
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+INSERT INTO users values(USER_ID_SEQ.NEXTVAL,'rams123','Customer','Ramya','9812745475','8273466584','Vizag','ramya@gmail.com');
+INSERT INTO users values(USER_ID_SEQ.NEXTVAL,'sam','Customer','Sam','9832746658','8327656657','Chennai','sam@gmail.com');
+INSERT INTO users values(USER_ID_SEQ.NEXTVAL,'chay','Customer','Chay','8723645564','8327647557','Hyderabad','chay@gmail.com');
+INSERT INTO users values(USER_ID_SEQ.NEXTVAL,'pavs','Employee','Pavs','9832764655','8327647557','Guntur','pavs@gmail.com');
+INSERT INTO users values(USER_ID_SEQ.NEXTVAL,'chitti','Employee','Keerthi','9821647554','8732647654','Bangalore','keerthi@gmail.com');
+SQL> select * from users;
+
+USER PASSWOR ROLE       USER_NAME            MOBILE_NO  PHONE                   
+---- ------- ---------- -------------------- ---------- ----------              
+ADDRESS                                                                         
+----------------------------------------                                        
+EMAIL                                                                           
+----------------------------------------                                        
+1000 rams123 Customer   Ramya                9812745475 8273466584              
+Vizag                                                                           
+ramya@gmail.com                                                                 
+                                                                                
+1001 sam     Customer   Sam                  9832746658 8327656657              
+Chennai                                                                         
+sam@gmail.com                                                                   
+
+USER PASSWOR ROLE       USER_NAME            MOBILE_NO  PHONE                   
+---- ------- ---------- -------------------- ---------- ----------              
+ADDRESS                                                                         
+----------------------------------------                                        
+EMAIL                                                                           
+----------------------------------------                                        
+                                                                                
+1002 chay    Customer   Chay                 8723645564 8327647557              
+Hyderabad                                                                       
+chay@gmail.com                                                                  
+                                                                                
+1003 pavs    Employee   Pavs                 9832764655 8327647557              
+Guntur                                                                          
+
+USER PASSWOR ROLE       USER_NAME            MOBILE_NO  PHONE                   
+---- ------- ---------- -------------------- ---------- ----------              
+ADDRESS                                                                         
+----------------------------------------                                        
+EMAIL                                                                           
+----------------------------------------                                        
+pavs@gmail.com                                                                  
+                                                                                
+1004 chitti  Employee   Keerthi              9821647554 8732647654              
+Bangalore                                                                       
+keerthi@gmail.com                                                               
+                                                                                
+
+SQL> set pagesize 300
+SQL> set linesize 300
+SQL> select * from users;
+
+USER PASSWOR ROLE       USER_NAME            MOBILE_NO  PHONE      ADDRESS                                  EMAIL                                                                                                                                                                                           
+---- ------- ---------- -------------------- ---------- ---------- ---------------------------------------- ----------------------------------------                                                                                                                                                        
+1000 rams123 Customer   Ramya                9812745475 8273466584 Vizag                                    ramya@gmail.com                                                                                                                                                                                 
+1001 sam     Customer   Sam                  9832746658 8327656657 Chennai                                  sam@gmail.com                                                                                                                                                                                   
+1002 chay    Customer   Chay                 8723645564 8327647557 Hyderabad                                chay@gmail.com                                                                                                                                                                                  
+1003 pavs    Employee   Pavs                 9832764655 8327647557 Guntur                                   pavs@gmail.com                                                                                                                                                                                  
+1004 chitti  Employee   Keerthi              9821647554 8732647654 Bangalore                                keerthi@gmail.com                                                                                                                                                                               
+
+SQL> exit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SQL> INSERT INTO hotel VALUES(hotel_id_seq.NEXTVAL,'Mumbai','The Indian Hotel','Chatrapathi Sivaji Road','Have a continental food and pool facilities',9856.00,'8734656574','9863674653','5','sutra@gmail.com','+1923657863845');
+
+1 row created.
+
+SQL> INSERT INTO hotel VALUES(hotel_id_seq.NEXTVAL,'Mumbai','FabHotel Suites','Gulab Estate','Have a continental food and pool facilities',2834.00,'9832754646','8326564738','3','artonsuites@gmail.com','+19824675372');
+
+1 row created.
+
+INSERT INTO hotel VALUES(hotel_id_seq.NEXTVAL,'Mumbai','Sahara Star','Domestic Airport','Have a continental food,wifi and pool facilities',8583.00,'8327654547','9284773856','5','saharastar@gmail.com','+19832645487','4017.jpg');
+INSERT INTO hotel VALUES(hotel_id_seq.NEXTVAL,'Chennai','Deccan Plaza','Royapetta High Road','Have a North Indian food and wifi facilities',2452.00,'9832174649','9238756522','4','deccanplaza@gmail.com','+1827364638299','4018.jpg');
+INSERT INTO hotel VALUES(hotel_id_seq.NEXTVAL,'Chennai','Treebo Grace Residency','Puraisaivakam','Have a North Indian food,cab and wifi facilities',2770.00,'9218746483','9238756638','4','treebograce@gmail.com','+1873266492923','4019.jpg');
+INSERT INTO hotel VALUES(hotel_id_seq.NEXTVAL,'Chennai','Blu Iris','Naidu Colony','Have a North Indian food facility',1759.00,'9832664285','7982477674','3','bluiris@gmail.com','+1982347668399','4020.jpg');
+INSERT INTO hotel VALUES(hotel_id_seq.NEXTVAL,'Bangalore','Leela Palace','Kodihalli','Have a Continental Food,Cab and Pool Facilities',9999.00,'9832764759','8327656483','5','leelapalace@gmail.com','+18217364537','4021.jpg');
+INSERT INTO hotel VALUES(hotel_id_seq.NEXTVAL,'Bangalore','Radha Regent','IIOC Electronic City','Have a Continental Food,Cab and Pool Facilities',9520.00,'9812476648','7623545483','5','radharegent@gmail.com','+182376475474','4022.jpg');
+INSERT INTO hotel VALUES(hotel_id_seq.NEXTVAL,'Bangalore','Le Meridian','Sankey Road','Have a Continental Food and PoolFacilities',8500.00,'8327655484','9328579878','4','lemeridian@gmail.com','+19821465478499','4023.jpg');
+
+1 row created.
+
+SQL> set pagesize 300
+SQL> set linesize 300
+SQL> select * from hotel;
+
+HOTEL_ID                  CITY                 HOTEL_NAME                     ADDRESS                                  DESCRIPTION                                        AVG_RATE_PER_NIGHT PHONE_NO1  PHONE_NO2      RATING EMAIL                                    FAX                                  
+------------------------- -------------------- ------------------------------ ---------------------------------------- -------------------------------------------------- ------------------ ---------- ---------- ---------- ---------------------------------------- ---------------                      
+4001                      Mumbai               Le Sutra-The Indian Art Hotel  Chatrapathi Sivaji Road                  Have a continental food and pool facilities                      9856 8734656574 9863674653          5 sutra@gmail.com                          +1923657863845                       
+4002                      Mumbai               FabHotel Arton Suites          Gulab Estate                             Have a continental food and pool facilities                      2834 9832754646 8326564738          3 artonsuites@gmail.com                    +19824675372                         
+4003                      Mumbai               Sahara Star                    Domestic Airport                         Have a continental food,wifi and pool facilities                 8583 8327654547 9284773856          5 saharastar@gmail.com                     +19832645487                         
+4004                      Chennai              Deccan Plaza                   Royapetta High Road                      Have a North Indian food and wifi facilities                     2452 9832174649 9238756522          4 deccanplaza@gmail.com                    +1827364638299                       
+4015                      Chennai              Treebo Grace Residency         Puraisaivakam                            Have a North Indian food,cab and wifi facilities                 2770 9218746483 9238756638          4 treebograce@gmail.com                    +1873266492923                       
+4006                      Chennai              Blu Iris                       Naidu Colony                             Have a North Indian food facility                                1759 9832664285 7982477674          3 bluiris@gmail.com                        +1982347668399                       
+4007                      Bangalore            Leela Palace                   Kodihalli                                Have a Continental Food,Cab and Pool Facilities                  9999 9832764759 8327656483          5 leelapalace@gmail.com                    +18217364537                         
+4008                      Bangalore            Radha Regent                   IIOC Electronic City                     Have a Continental Food,Cab and Pool Facilities                  9520 9812476648 7623545483          5 radharegent@gmail.com                    +182376475474                        
+4009                      Bangalore            Le Meridian                    Sankey Road                              Have a Continental Food and Pool Facilities                      8500 8327655484 9328579878          4 lemeridian@gmail.com                     +19821465478499                      
+
+9 rows selected.
+
+SQL> spool off
